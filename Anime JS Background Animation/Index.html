@@ -1,0 +1,45 @@
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=7">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Background Animation | Anime.JS</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2><span>Noice</span><br>AnimeJS</h2>
+        </div>
+        <script src="../anime.min.js"></script>
+        <script>
+             const container = document.querySelector('.container');
+            for (let i = 0; i < 10; i++) {
+                const blocks = document.createElement('div');
+                blocks.classList.add('block');
+                container.appendChild(blocks)
+            }
+
+            function animateBlocks() {
+                anime({
+                    targets: '.block',
+                    translateX: function(){
+                        return anime.random(-700, 700);
+                    },
+                    translateY: function(){
+                        return anime.random(-500, 500);
+                    },
+                    scale: function(){
+                        return anime.random(1, 4);
+                    },
+                    easing: 'linear',
+                    duration: 3000,
+                    delay: anime.stagger(10),
+                    complete: animateBlocks,
+                })
+            }
+
+            animateBlocks();
+        </script>
+    </body>
+</html>
